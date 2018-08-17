@@ -1,0 +1,14 @@
+- name: Cleaning old MOTD
+  file:
+     path: "{{ item }}" 
+     state: absent
+  with_fileglob:
+      - "/etc/update-motd.d/*"
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian" and aws_monitoring_motd_install|bool == true 
+
+- name: Installing new MOTD
+  template:
+     src: "etc/profile.d/motd.sh.j2"
+     dest: "/etc/profile.d/motd.sh"
+     mode: 0666
+  when: aws_monitoring_motd_install|bool == true

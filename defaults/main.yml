@@ -1,0 +1,12 @@
+---
+# defaults file for aws-monitoring-scripts
+
+aws_monitoring_base_install: "/opt"
+aws_monitoring_user: "{{ ansible_user }}" 
+aws_monitoring_parameters: "--disk-space-util --disk-path=/"
+aws_monitoring_version: "1.2.2"
+
+aws_secret_key: "" 
+aws_access_key: ""
+
+aws_monitoring_motd_install: true  
